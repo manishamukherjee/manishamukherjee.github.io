@@ -1,218 +1,451 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Manisha Mukherjee</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f3f3f3;
-        padding: 50px;
-        color: #333;
-      }
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Manisha Mukherjee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #3b82f6;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+    }
+
+    .wrapper {
+      max-width: 960px;
+      margin: 50px auto;
+      background: var(--card);
+      padding: 50px 60px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    /* HERO */
+    header {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    header img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .links {
+      margin-top: 18px;
+      font-size: 15px;
+    }
+
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .links a:hover {
+      color: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    .links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .links a:hover::after {
+      width: 100%;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-top: 50px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 600;
+      margin: 24px 0 10px 0;
+      color: var(--text-main);
+    }
+
+    p {
+      font-size: 17px;
+      margin: 14px 0;
+      color: var(--text-main);
+    }
+
+    /* CORE STATEMENT */
+    .core {
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text-main);
+      max-width: 820px;
+    }
+
+    .core strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* RESEARCH AREAS */
+    .research-item {
+      margin-bottom: 28px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .research-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    }
+
+    .research-item h3 {
+      margin-top: 0;
+    }
+
+    .research-item p {
+      font-size: 16px;
+      margin: 8px 0 0 0;
+    }
+
+    /* LISTS */
+    ul {
+      margin: 14px 0 0 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    /* EXPERIENCE */
+    .experience li {
+      margin-bottom: 8px;
+    }
+
+    /* PUBLICATIONS */
+    .pub-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .pub-title a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
+    }
+
+    .pub-authors {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pub-authors .me {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .pub-venue {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* MODELS */
+    .model-item {
+      margin-bottom: 16px;
+      padding: 16px;
+      background: #f8fafc;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .model-item:hover {
+      background: #f1f5f9;
+      transform: translateX(2px);
+    }
+
+    .model-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 17px;
+    }
+
+    .model-item a:hover {
+      color: #2563eb;
+    }
+
+    .model-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    footer {
+      margin-top: 70px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 800px) {
       .wrapper {
-        max-width: 800px;
-        margin: 0 auto;
-        
-        padding: -15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 40px 30px;
+        margin: 20px;
       }
 
       header {
+        grid-template-columns: 1fr;
         text-align: center;
-        margin-top: -15px; 
+      }
+
+      header img {
+        margin: 0 auto;
       }
 
       h1 {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 10px;
+        font-size: 32px;
       }
+    }
+  </style>
+</head>
 
-      .header-image-container {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 0 auto 10px;
-      }
+<body>
+<div class="wrapper">
 
-      .header-image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
+  <!-- HERO -->
+  <header>
+    <img src="images/me.jpg" alt="Manisha Mukherjee">
 
-      .contact-info {
-        font-size: 16px;
-        color: #666;
-      }
+    <div>
+      <h1>Manisha Mukherjee</h1>
+      <div class="subtitle">
+        PhD Candidate · School of Computer Science<br>
+        Carnegie Mellon University<br>
+        Advisor: <a href="https://vhellendoorn.github.io/" style="color: var(--accent); text-decoration: none;">Vincent Hellendoorn</a>
+      </div>
 
-      .contact-info p {
-        margin: 5px 0;
-        text-align: left;
-      }
-
-      a {
-        color: #39c;
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: #069;
-      }
-
-      section {
-        margin-top: 20px;
-      }
-
-      h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 20px;
-      }
-
-      p {
-        margin: 10px 0;
-      }
-
-      ul {
-        list-style-type: disc;
-        margin-left: 20px;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      footer small {
-        font-size: 12px;
-        color: #777;
-      }
-      
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Manisha Mukherjee</h1>
-        <div class="header-image-container">
-          <img src="images/me.jpg" alt="mypic">
-        </div>
-        <div class="contact-info">
-          <p>Ph.D. Student at <a href="https://www.cmu.edu/">Carnegie Mellon University</a></p>
-          <p> <a href="https://s3d.cmu.edu/">Software and Societal Systems</a></p>
-          <p> <a href="https://www.cs.cmu.edu/">School of Computer Science
-          </a></p>
-
-          <p>
-            <a href="docs/Manisha_CV2025.pdf" target="_blank">
-              <img src="images/cv.jpg" alt="CV Icon" width="20" height="20"> Resume
-            </a>
-          </p>
-
-          <p>
-            <a href="https://www.linkedin.com/in/manisha-m-18472284/" target="_blank">
-              <img src="images/ln.webp" alt="LinkedIn Icon" width="20" height="20"> LinkedIn
-            </a>
-          </p>
-          <p>
-            <a href="https://github.com/manishamukherjee" target="_blank">
-              <img src="images/github.png" alt="GitHub Icon" width="20" height="20"> GitHub
-            </a>
-          </p>
-          <p>
-            <a href="https://scholar.google.com/citations?hl=en&user=JWs4-NcAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">
-              <img src="images/gs.png" alt="Google Scholar Icon" width="20" height="20"> Google Scholar
-            </a>
-          </p>
-        </div>
-      </header>
-      <section>
-        <p>Hello! I'm Manisha, a PhD student at <a href="https://s3d.cmu.edu/">S3D</a> in the <a href="https://www.cs.cmu.edu/">School of Computer Science</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a> working with <a href="https://vhellendoorn.github.io/">Vincent Hellendoorn</a>.</p>
-        
-        <h2>About Me</h2>
-<p>I am a LLM4Code researcher, and I work at the intersection of machine learning, software engineering, and security to enhance AI-generated code. My passion lies in making code assistants more accurate, secure, and aligned with developer needs.</p>
-
-<p>My research leverages the collective wisdom of the developer community—through <strong>domain-specific training</strong> and <strong>expert-driven retrieval systems</strong>—to bridge the gap between AI capabilities and software engineering best practices.</p>
-
-<h3>Research Focus</h3>
-<ul>
-  <li><strong>Specialized Models for Specialized Tasks</strong>: I investigate how targeted pretraining on programming knowledge repositories (like Stack Overflow) can create more effective specialized models that outperform larger generalist approaches on technical tasks, even with significantly fewer parameters. <p>Here are two Medium Language Models I trained exclusively on StackOverflow data: <a href='https://huggingface.co/mmukh/SOBertLarge'>SOBertLarge</a> and <a href='https://huggingface.co/mmukh/SOBertBase'>SOBertBase</a>.</p>
-  </li>
-  
-  <li><strong>Secure Code Generation</strong>: I develop techniques that infuse community-driven security insights into LLM-generated code, significantly reducing vulnerabilities and building greater trust in AI-assisted development workflows.</li>
-</ul>
-
-        <p>I am broadly interested in:</p>
-        <ul>
-          <li>AI4Code</li>
-          <li>Generative AI</li>
-          <li>Software Engineering</li>
-          <li>Security</li>
-          <li>Natural Language Processing (NLP)</li>
-          
-        </ul>
-        
-        <p>Before this, I worked in computer networks and computer vision for my master’s thesis, advised by <a href="https://www.cse.psu.edu/~tfl12/">Tom La Porta</a>.</p>
-
-        <p>
-          <h2>Experience</h2>
-          <ul>
-            <li>Adobe Research (Summer 2024)</li>
-            <li>Lawrence Livermore National Lab (Summer 2022, 2023)</li>
-            <li>Idaho National Lab (Summer 2020)</li>
-            <li>Fujitsu Research Labs America (Summer 2021, 2019)</li>
-            <li>Cisco Systems Inc (2014-2017)</li>
-            <li>Capgemini India Pvt Ltd (2011-2012)</li>
-          </ul>
-        </p>
-
-        <p>
-          <h2>Selected Publications and Patents</h2>
-          
-          <ul>
-            <li>
-              <b>M. Mukherjee</b> and V. J. Hellendoorn, "<a href="http://arxiv.org/abs/2503.13654">SOSecure: Safer Code Generation with RAG and StackOverflow
-                Discussions</a>," arXiv preprint arXiv:2306.03268, 2025.
-            </li>
-            <li>
-              <b> M. Mukherjee </b>, S. Kim, X. Chen, D. Luo, T. Yu, and T. Mai, "<a href="https://arxiv.org/pdf/2502.15237">From Documents to Dialogue: Building KG-RAG Enhanced AI Assistants</a>," arXiv preprint arXiv:2502.15237, 2025.
-            </li>
-            <li>
-              <b>M. Mukherjee</b> and V. J. Hellendoorn, "<a href="https://arxiv.org/pdf/2306.03268">Stack overflowing with results: The case for domain-specific pre-training over one-size-fits-all models</a>," arXiv preprint arXiv:2306.03268, 2023.
-            </li>
-            <li>
-              V. J. Hellendoorn, J. Tsay, <b>M. Mukherjee</b>, and M. Hirzel, "<a href="https://dl.acm.org/doi/pdf/10.1145/3468264.3473134">Towards automating code review at scale</a>," in 29th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE ’21), 2021.
-            </li>
-            <li>
-              <b>M. Mukherjee</b>, M. Bahrami, and W. P. Chen, "<a href="https://patentimages.storage.googleapis.com/1e/38/22/59544ec4fc7bd2/US11651014.pdf">Source code retrieval</a>," in US Patent Application 17/085,894, 2020.
-            </li>
-            <li>
-              <b>M. Mukherjee</b>, J. Edwards, H. Kwon, and T. F. La Porta, "<a href="https://www.researchgate.net/profile/Manisha-Mukherjee-3/publication/308673210_Quality_of_information-aware_real-time_traffic_flow_analysis_and_reporting/links/6153fb8cfd7b3d121559b0c1/Quality-of-information-aware-real-time-traffic-flow-analysis-and-reporting.pdf">Quality of information-aware real-time traffic flow analysis and reporting</a>," in 2015 IEEE International Conference on Pervasive Computing and Communication Workshops (PerCom Workshops), IEEE, 2015, pp. 69–74.
-            </li>
-            <li>
-              <b>M. Mukherjee</b>, "<a href="https://etda.libraries.psu.edu/files/final_submissions/10078">Determination of real-time traffic flow parameters in different devices based on qoi requirements</a>," in MS Thesis, 2014.
-            </li>
-          </ul>
-        </p>
-      </section>
-
-      <footer >
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+      <div class="links">
+        <a href="mailto:mmukherj@andrew.cmu.edu">Email</a>
+        <a href="docs/Manisha_CV2026.pdf">CV</a>
+        <a href="https://github.com/manishamukherjee">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=JWs4-NcAAAAJ">Scholar</a>
+        <a href="https://www.linkedin.com/in/manisha-m-18472284/">LinkedIn</a>
+      </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-  </body>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <p class="core">
+      I work on AI for software engineering, with a focus on making
+      language models more reliable and useful for code-related tasks.
+    </p>
+
+    <p class="core">
+      My research investigates how domain knowledge can be integrated into
+      language models through complementary approaches such as training specialized
+      models on domain-specific data, augmenting generation with retrieval from community
+      knowledge bases, and leveraging execution feedback to improve code quality.
+    </p>
+  </section>
+
+  <!-- RESEARCH -->
+  <section>
+    <h2>Research</h2>
+    
+    <div class="research-item">
+      <h3>Domain-Specialized Models</h3>
+      <p>Investigating whether smaller models trained extensively on domain-specific data can outperform much larger general-purpose models for certain tasks. SOBert models (125M-762M parameters, trained for under $2,000) outperform much larger general-purpose models on StackOverflow code labeling tasks.</p>
+    </div>
+
+    <div class="research-item">
+      <h3>Secure Code Generation</h3>
+      <p>Developing retrieval-augmented generation systems that leverage community security discussions from StackOverflow to identify and fix vulnerabilities in LLM-generated code. SOSecure achieves 72-97% fix rates compared to 38-56% for GPT-4 alone, without introducing new vulnerabilities.</p>
+    </div>
+
+    <div class="research-item">
+      <h3>Reinforcement Learning from Execution Feedback</h3>
+      <p>Applying reinforcement learning with compiler and execution feedback to improve code quality, with a focus on decompilation tasks where the goal is producing readable, semantically equivalent code from binary executables using compiler and test feedback as learning signals.</p>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section>
+    <h2>Released Models</h2>
+    <p>Publicly released domain-specialized language models on Hugging Face:</p>
+    
+    <div class="model-item">
+      <a href="https://huggingface.co/mmukh/SOBertLarge">SOBertLarge</a>
+      <div class="model-desc">762M parameter model trained on StackOverflow.</div>
+    </div>
+
+    <div class="model-item">
+      <a href="https://huggingface.co/mmukh/SOBertBase">SOBertBase</a>
+      <div class="model-desc">125M parameter model trained on StackOverflow.</div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section>
+    <h2>Selected Publications and Patents</h2>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="http://arxiv.org/abs/2503.13654">SOSecure: Safer Code Generation with RAG and StackOverflow Discussions</a>
+      </div>
+      <div class="pub-authors">
+        <span class="me">M. Mukherjee</span> and V. J. Hellendoorn
+      </div>
+      <div class="pub-venue">arXiv preprint, 2025</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://arxiv.org/pdf/2502.15237">From Documents to Dialogue: Building KG-RAG Enhanced AI Assistants</a>
+      </div>
+      <div class="pub-authors">
+        <span class="me">M. Mukherjee</span>, S. Kim, X. Chen, D. Luo, T. Yu, and T. Mai
+      </div>
+      <div class="pub-venue">arXiv preprint, 2025</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://arxiv.org/pdf/2306.03268">Skill over Scale: The Case for Medium, Domain-Specific Models for SE</a>
+      </div>
+      <div class="pub-authors">
+        <span class="me">M. Mukherjee</span> and V. J. Hellendoorn
+      </div>
+      <div class="pub-venue">IEEE/ACM International Conference on AI Foundation Models and Software Engineering (FORGE), 2025</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3468264.3473134">Towards Automating Code Review at Scale</a>
+      </div>
+      <div class="pub-authors">
+        V. J. Hellendoorn, J. Tsay, <span class="me">M. Mukherjee</span>, and M. Hirzel
+      </div>
+      <div class="pub-venue">29th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE), 2021</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://patentimages.storage.googleapis.com/1e/38/22/59544ec4fc7bd2/US11651014.pdf">Source Code Retrieval</a>
+      </div>
+      <div class="pub-authors">
+        <span class="me">M. Mukherjee</span>, M. Bahrami, and W. P. Chen
+      </div>
+      <div class="pub-venue">US Patent 11,651,014, 2023</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://www.researchgate.net/profile/Manisha-Mukherjee-3/publication/308673210_Quality_of_information-aware_real-time_traffic_flow_analysis_and_reporting/links/6153fb8cfd7b3d121559b0c1/Quality-of-information-aware-real-time-traffic-flow-analysis-and-reporting.pdf">Quality of Information-Aware Real-Time Traffic Flow Analysis and Reporting</a>
+      </div>
+      <div class="pub-authors">
+        <span class="me">M. Mukherjee</span>, J. Edwards, H. Kwon, and T. F. La Porta
+      </div>
+      <div class="pub-venue">IEEE International Conference on Pervasive Computing and Communication Workshops (PerCom), 2015</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <h2>Experience</h2>
+    <ul class="experience">
+      <li><strong>Pacific Northwest National Laboratory</strong> — Research Intern, Summer 2025</li>
+      <li><strong>Adobe Research</strong> — Research Intern, Summer 2024</li>
+      <li><strong>Lawrence Livermore National Laboratory</strong> — Research Intern, Summer 2022, 2023</li>
+      <li><strong>Fujitsu Labs America</strong> — Research Intern, Summer 2019, 2021</li>
+      <li><strong>Idaho National Laboratory</strong> — Research Intern, Summer 2020</li>
+      <li><strong>Cisco Systems</strong> — Software Engineer, 2014-2017</li>
+    </ul>
+  </section>
+
+  <footer>
+    Last updated December 2025 · Pittsburgh, PA
+  </footer>
+
+</div>
+</body>
 </html>
